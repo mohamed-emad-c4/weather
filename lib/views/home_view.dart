@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/cuibts/getwearhercubit/get_weather_cubit.dart';
 import 'package:weather/cuibts/getwearhercubit/getweatherstates.dart';
@@ -29,18 +31,18 @@ class HomeView extends StatelessWidget {
               icon: const Icon(Icons.search))
         ],
       ),
-      body:BlocBuilder<GetWeatherCubit, WeatherStates>(
-        builder: (context, state) {
-          if (state is SuccessGetweather) {
-            return WeatherInfoBody();
-        }else if (state is FailurGetweather) {
+      body: BlocBuilder<GetWeatherCubit, WeatherStates>(
+          builder: (context, state) {
+            
+        if (state is SuccessGetweather) {
+          return  WeatherInfoBody(
+            weathermodle1:state.weathermodle1 ,
+          );
+          
+        } else {
           return const NoWeatherBody();
-        }else {
-          return Center(child: Text("opps"),);
         }
-        }
-        
-      ),
+      }),
     );
   }
 }

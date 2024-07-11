@@ -6,21 +6,21 @@ import 'package:weather/views/home_view.dart';
 import 'views/home_view.dart';
 
 void main() {
-  runApp( const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>GetWeatherCubit(),
-      child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: HomeView(),
-        ),
+      create: (context) => GetWeatherCubit(),
+      child: MaterialApp(
+        darkTheme: ThemeData.dark(),
+        debugShowCheckedModeBanner: false,
+        home: const HomeView(),
+      ),
     );
   }
 }
